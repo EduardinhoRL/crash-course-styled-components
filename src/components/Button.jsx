@@ -4,12 +4,13 @@ import {Wrapper, fadeIn} from './styled'
 import styled, { css } from 'styled-components'
 
 const StyledButton =  styled.button`
-  background-color: #fff;
-  color:palevioletred;
-  font-size: 1.2rem;
+  background-color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.main};
+  font-size: ${props => props.theme.fontSize.p};
   margin: ${({margin}) => margin || '2rem'};
   padding: .5rem 1rem;
   animation:  2s ${fadeIn} ease-in;
+  margin-top: ${({theme}) => theme.spacers.large};
 
   ${({primary}) => primary && css`
     background-color: palevioletred;
@@ -20,6 +21,11 @@ const StyledButton =  styled.button`
   &:hover {
     color: #fff;
     background-color: palevioletred;
+  }
+
+  @media ${({theme}) => theme.mediaQueries.bellow768} {
+    font-size: 0.4rem;
+    color: blue;
   }
 `
 const OutterWrapper =  styled.div`
